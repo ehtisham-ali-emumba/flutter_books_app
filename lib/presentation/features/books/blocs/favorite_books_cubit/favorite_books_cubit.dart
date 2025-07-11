@@ -34,13 +34,10 @@ class FavoriteBooksCubit extends Cubit<FavoriteBooksState> {
       );
 
       if (existingIndex >= 0) {
-        // Remove book if it exists
         currentBooks.removeAt(existingIndex);
       } else {
-        // Add book if it doesn't exist
         currentBooks.add(book);
       }
-
       emit(
         state.copyWith(
           books: currentBooks,

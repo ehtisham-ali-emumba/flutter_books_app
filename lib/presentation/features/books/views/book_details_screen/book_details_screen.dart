@@ -22,8 +22,8 @@ class BookDetailsScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           BlocBuilder<FavoriteBooksCubit, FavoriteBooksState>(
-            builder: (context, state) {
-              final bool isFavorite = context
+            builder: (blocContext, state) {
+              final bool isFavorite = blocContext
                   .read<FavoriteBooksCubit>()
                   .isFavorite(book.id);
 
@@ -33,7 +33,7 @@ class BookDetailsScreen extends StatelessWidget {
                   color: isFavorite ? Colors.red : null,
                 ),
                 onPressed: () {
-                  context.read<FavoriteBooksCubit>().toggleFavorite(book);
+                  blocContext.read<FavoriteBooksCubit>().toggleFavorite(book);
                 },
               );
             },
