@@ -1,4 +1,5 @@
 import 'package:books/core/constants/app_theme.dart';
+import 'package:books/presentation/features/books/blocs/favorite_books_cubit/favorite_books_cubit.dart';
 import 'package:books/presentation/shared_blocs/app_bloc/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +10,16 @@ import 'presentation/shared_blocs/app_bloc/app_bloc.dart';
 
 void main() {
   setupServiceLocator();
-  runApp(BlocProvider(create: (_) => AppBloc(), child: const MyApp()));
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => AppBloc()),
+        BlocProvider(create: (_) => FavoriteBooksCubit()),
+        // Add more BlocProviders here if needed
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +34,7 @@ class MyApp extends StatelessWidget {
 
         return MaterialApp.router(
           routerConfig: appRouter,
-          theme: AppTheme.getTheme(isDarkMode, themeColor), // example color
+          theme: AppTheme.getTheme(isDarkMode, themeColor),
         );
       },
     );
