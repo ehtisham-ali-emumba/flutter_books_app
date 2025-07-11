@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../home_screen/app_drawer_icon.dart';
+
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
 
@@ -7,6 +9,8 @@ class ExploreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: AppDrawerIcon(),
+        centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text("ExploreScreen"),
       ),

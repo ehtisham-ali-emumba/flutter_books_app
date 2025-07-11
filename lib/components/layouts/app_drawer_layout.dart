@@ -3,12 +3,15 @@ import 'package:go_router/go_router.dart';
 
 class AppDrawerLayout extends StatelessWidget {
   final Widget child;
+  static final GlobalKey<ScaffoldState> scaffoldKey =
+      GlobalKey<ScaffoldState>();
 
-  const AppDrawerLayout({required this.child});
+  const AppDrawerLayout({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       drawer: Drawer(
         child: ListView(
           children: [
