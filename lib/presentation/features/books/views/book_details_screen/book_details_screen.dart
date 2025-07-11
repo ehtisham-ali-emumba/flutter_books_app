@@ -1,6 +1,8 @@
 import 'package:books/core/utils/image_utils.dart';
 import 'package:books/data/models/book.dart';
+import 'package:books/presentation/features/books/blocs/favorite_books_cubit/favorite_books_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BookDetailsScreen extends StatelessWidget {
   final Book book;
@@ -14,10 +16,30 @@ class BookDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('book');
-    print(book.id);
     return Scaffold(
-      appBar: AppBar(title: Text(book.title), elevation: 0),
+      appBar: AppBar(
+        title: Text(book.title),
+        elevation: 0,
+        actions: [
+          BlocBuilder<FavoriteBooksCubit, FavoriteBooksState>(
+            builder: (context, state) {
+              final bool isFavorite = context
+                  .read<FavoriteBooksCubit>()
+                  .isFavorite(book.id);
+
+              return IconButton(
+                icon: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: isFavorite ? Colors.red : null,
+                ),
+                onPressed: () {
+                  context.read<FavoriteBooksCubit>().toggleFavorite(book);
+                },
+              );
+            },
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(

@@ -15,7 +15,7 @@ class FavoriteBooksCubit extends Cubit<FavoriteBooksState> {
       // For now, just initialize with empty list
       emit(
         state.copyWith(books: const [], status: FavoriteBooksStatus.success),
-      );w
+      );
     } catch (e) {
       emit(
         state.copyWith(
