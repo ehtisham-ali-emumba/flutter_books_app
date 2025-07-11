@@ -4,7 +4,7 @@ import 'package:books/data/models/book.dart';
 import 'package:books/presentation/features/auth/views/social_signin_screen.dart';
 import 'package:books/presentation/features/books/views/book_details_screen/book_details_screen.dart';
 import 'package:books/presentation/features/books/views/explore_screen/explore_screen.dart';
-import 'package:books/presentation/features/books/views/favorite_books_screen.dart';
+import 'package:books/presentation/features/books/views/favorite_books_screen/favorite_books_screen.dart';
 import 'package:books/presentation/features/books/views/home_screen/home_screen.dart';
 import 'package:books/presentation/features/settings/views/settings_screen.dart';
 import 'package:go_router/go_router.dart';
