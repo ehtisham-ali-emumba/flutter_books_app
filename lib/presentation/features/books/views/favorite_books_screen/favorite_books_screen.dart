@@ -12,7 +12,7 @@ class FavoriteBooksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const AppText('Favorite Books'),
+        title: const Text('Favorite Books'),
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
