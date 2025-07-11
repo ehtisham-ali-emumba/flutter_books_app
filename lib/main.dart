@@ -1,9 +1,13 @@
+import 'package:books/core/constants/app_theme.dart';
+import 'package:books/presentation/shared_blocs/app_bloc/app_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/navigation/app_routes.dart';
+import 'presentation/shared_blocs/app_bloc/app_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(BlocProvider(create: (_) => AppBloc(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,6 +15,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(routerConfig: appRouter);
+    return BlocBuilder<AppBloc, AppState>(
+      builder: (context, state) {
+        final isDarkMode = state.isDarkMode;
+        final Color themeColor = state.themeColor;
+
+        return MaterialApp.router(
+          routerConfig: appRouter,
+          theme: AppTheme.getTheme(isDarkMode, themeColor), // example color
+        );
+      },
+    );
   }
 }

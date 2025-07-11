@@ -1,9 +1,11 @@
+import 'dart:ui';
+
 class AppEvent {
   const AppEvent();
 }
 
 class AppThemeColorChanged extends AppEvent {
-  final String themeColor;
+  final Color themeColor;
 
   const AppThemeColorChanged(this.themeColor);
 
