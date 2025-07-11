@@ -1,0 +1,76 @@
+import 'package:books/core/utils/image_utils.dart';
+import 'package:books/data/models/book.dart';
+import 'package:flutter/material.dart';
+
+class BookDetailsScreen extends StatelessWidget {
+  final Book book;
+  final String heroId;
+
+  const BookDetailsScreen({
+    super.key,
+    required this.book,
+    required this.heroId,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    print('book');
+    print(book.id);
+    return Scaffold(
+      appBar: AppBar(title: Text(book.title), elevation: 0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Hero(
+                tag: heroId,
+                child: Image.network(
+                  ImageUtils.getBookCoverImagePath(book.coverImageUrlId),
+                  height: 300,
+                  fit: BoxFit.contain,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.book, size: 120),
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+            Text(
+              book.title,
+              style: Theme.of(
+                context,
+              ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'By ${book.author}',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            const SizedBox(height: 16),
+            _buildInfoRow(context, 'Published', book.publishYear.toString()),
+            const SizedBox(height: 8),
+            _buildInfoRow(context, 'ID', book.id),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfoRow(BuildContext context, String label, String value) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '$label: ',
+          style: Theme.of(
+            context,
+          ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        Expanded(
+          child: Text(value, style: Theme.of(context).textTheme.bodyLarge),
+        ),
+      ],
+    );
+  }
+}

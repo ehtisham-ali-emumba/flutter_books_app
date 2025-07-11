@@ -15,7 +15,7 @@ class Book {
 
   factory Book.fromJson(Map<String, dynamic> json) {
     return Book(
-      id: json['key'],
+      id: json['key'].split('/').last,
       title: json['title'],
       author: json['authors'] != null
           ? (json['authors'] as List).map((a) => a['name']).join(', ')
@@ -27,7 +27,7 @@ class Book {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      'id': '/works/$id',
       'title': title,
       'author': author,
       'cover_id': coverImageUrlId,

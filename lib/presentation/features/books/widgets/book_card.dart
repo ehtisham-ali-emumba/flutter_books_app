@@ -2,6 +2,7 @@ import 'package:books/components/shared_widgets/app_text.dart';
 import 'package:books/core/utils/image_utils.dart';
 import 'package:books/data/models/book.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BookCard extends StatelessWidget {
   final Book book;
@@ -24,7 +25,12 @@ class BookCard extends StatelessWidget {
         ],
       ),
       child: InkWell(
-        onTap: () async {},
+        onTap: () async {
+          context.push(
+            '/book/${book.id}',
+            extra: {"book": book, "heroId": heroId},
+          );
+        },
         borderRadius: BorderRadius.circular(16),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(15),

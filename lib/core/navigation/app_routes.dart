@@ -1,6 +1,8 @@
 import 'package:books/components/layouts/app_drawer_layout.dart';
 import 'package:books/components/layouts/app_tab_layout.dart';
+import 'package:books/data/models/book.dart';
 import 'package:books/presentation/features/auth/views/social_signin_screen.dart';
+import 'package:books/presentation/features/books/views/book_details_screen/book_details_screen.dart';
 import 'package:books/presentation/features/books/views/explore_screen/explore_screen.dart';
 import 'package:books/presentation/features/books/views/home_screen/home_screen.dart';
 import 'package:books/presentation/features/settings/views/settings_screen.dart';
@@ -33,6 +35,18 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: '/settings',
           builder: (context, state) => SettingsScreen(),
+        ),
+        GoRoute(
+          path: '/book/:bookId',
+          builder: (context, state) {
+            final bookId = state.pathParameters['bookId']!;
+            print("bookId $bookId");
+            final Map<String, dynamic> extras =
+                state.extra as Map<String, dynamic>;
+            final book = extras['book'] as Book;
+            final heroId = extras['heroId'] as String;
+            return BookDetailsScreen(book: book, heroId: heroId);
+          },
         ),
       ],
     ),
