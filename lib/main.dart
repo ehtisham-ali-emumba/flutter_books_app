@@ -3,10 +3,12 @@ import 'package:books/presentation/shared_blocs/app_bloc/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'core/di/locator.dart';
 import 'core/navigation/app_routes.dart';
 import 'presentation/shared_blocs/app_bloc/app_bloc.dart';
 
 void main() {
+  setupServiceLocator();
   runApp(BlocProvider(create: (_) => AppBloc(), child: const MyApp()));
 }
 

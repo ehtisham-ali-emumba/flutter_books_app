@@ -1,4 +1,5 @@
 import 'package:books/components/shared_widgets/app_text.dart';
+import 'package:books/core/utils/image_utils.dart';
 import 'package:books/data/models/book.dart';
 import 'package:flutter/material.dart';
 
@@ -10,21 +11,21 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {},
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.5),
-              blurRadius: 10,
-              offset: Offset(0, 5),
-            ),
-          ],
-        ),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.5),
+            blurRadius: 10,
+            offset: Offset(0, 5),
+          ),
+        ],
+      ),
+      child: InkWell(
+        onTap: () async {},
+        borderRadius: BorderRadius.circular(16),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
           child: Stack(
@@ -33,7 +34,7 @@ class BookCard extends StatelessWidget {
               Hero(
                 tag: heroId ?? book.id, // Same tag as details screen
                 child: Image.network(
-                  book.coverImageUrl,
+                  ImageUtils.getBookCoverImagePath(book.coverImageUrlId),
                   height: double.infinity,
                   width: double.infinity,
                   fit: BoxFit.cover,
@@ -50,9 +51,9 @@ class BookCard extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    begin: Alignment.topCenter,
+                    begin: Alignment.topRight,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.transparent, Colors.black.withOpacity(0.8)],
+                    colors: [Colors.transparent, Colors.black.withOpacity(1)],
                   ),
                 ),
               ),
@@ -70,24 +71,22 @@ class BookCard extends StatelessWidget {
                       AppText(
                         book.title,
                         kind: TextKind.heading,
-                        fontSize: 19,
+                        fontSize: 23,
                         color: Colors.white,
                       ),
+                      SizedBox(height: 15),
+                      AppText(
+                        'By ${book.author}',
+                        kind: TextKind.caption,
+                        color: Colors.white,
+                        fontSize: 14,
+                      ),
                       SizedBox(height: 5),
-                      Row(
-                        children: [
-                          Text(
-                            book.author,
-                            style: TextStyle(color: Colors.grey[300]),
-                          ),
-                          SizedBox(width: 15),
-                          Icon(Icons.star, color: Colors.amber, size: 16),
-                          SizedBox(width: 4),
-                          Text(
-                            '${book.price}',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
+                      AppText(
+                        'Year ${book.publishYear}',
+                        kind: TextKind.caption,
+                        color: Colors.white,
+                        fontSize: 14,
                       ),
                     ],
                   ),

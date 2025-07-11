@@ -2,27 +2,26 @@ class Book {
   final String id;
   final String title;
   final String author;
-  final String description;
-  final String coverImageUrl;
-  final double price;
+  final int coverImageUrlId;
+  final int publishYear;
 
   Book({
     required this.id,
     required this.title,
     required this.author,
-    required this.description,
-    required this.coverImageUrl,
-    required this.price,
+    required this.coverImageUrlId,
+    required this.publishYear,
   });
 
   factory Book.fromJson(Map<String, dynamic> json) {
     return Book(
-      id: json['id'].toString(),
+      id: json['key'],
       title: json['title'],
-      author: json['author'],
-      description: json['description'],
-      coverImageUrl: json['cover_image_url'],
-      price: (json['price'] as num).toDouble(),
+      author: json['authors'] != null
+          ? (json['authors'] as List).map((a) => a['name']).join(', ')
+          : 'Unknown',
+      coverImageUrlId: json['cover_id'] != null ? json['cover_id'] as int : 0,
+      publishYear: json['first_publish_year'] as int,
     );
   }
 
@@ -31,9 +30,8 @@ class Book {
       'id': id,
       'title': title,
       'author': author,
-      'description': description,
-      'cover_image_url': coverImageUrl,
-      'price': price,
+      'cover_id': coverImageUrlId,
+      'first_publish_year': publishYear,
     };
   }
 }
