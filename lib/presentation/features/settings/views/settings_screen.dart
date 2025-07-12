@@ -1,3 +1,4 @@
+import 'package:books/presentation/features/books/views/home_screen/app_color_toggle.dart';
 import 'package:books/presentation/features/books/views/home_screen/app_dark_mode_toggle.dart';
 import 'package:books/presentation/features/books/views/home_screen/app_drawer_icon.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,12 @@ class SettingsScreen extends StatelessWidget {
             subtitle: "Toggle dark/light theme",
             trailing: AppDarkModeToggle(),
           ),
-
+          _buildSettingsTile(
+            context,
+            title: "Theme Color",
+            subtitle: "Toggle theme color",
+            trailing: AppColorToggle(),
+          ),
           const Divider(color: Colors.grey),
 
           // Account section

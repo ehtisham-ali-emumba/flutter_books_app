@@ -8,8 +8,9 @@ import 'core/di/locator.dart';
 import 'core/navigation/app_routes.dart';
 import 'presentation/shared_blocs/app_bloc/app_bloc.dart';
 
-void main() {
-  setupServiceLocator();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupServiceLocator();
   runApp(
     MultiBlocProvider(
       providers: [

@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:books/core/constants/storage_keys.dart';
+import 'package:books/core/di/locator.dart';
+import 'package:books/core/services/shared_prefs_service.dart';
 import 'package:books/data/models/book.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'favorite_books_state.dart';
 
 class FavoriteBooksCubit extends Cubit<FavoriteBooksState> {
+  final SharedPrefsService _prefs = getIt<SharedPrefsService>();
+
   FavoriteBooksCubit() : super(const FavoriteBooksState()) {
     loadFavoriteBooks();
   }
@@ -12,10 +19,12 @@ class FavoriteBooksCubit extends Cubit<FavoriteBooksState> {
   void loadFavoriteBooks() {
     emit(state.copyWith(status: FavoriteBooksStatus.loading));
     try {
-      // For now, just initialize with empty list
-      emit(
-        state.copyWith(books: const [], status: FavoriteBooksStatus.success),
+      final books = getIt<SharedPrefsService>().getObjectList<Book>(
+        StorageKeys.favoriteBooks,
+        (jsonString) => Book.fromJson(json.decode(jsonString)),
       );
+
+      emit(state.copyWith(books: books, status: FavoriteBooksStatus.success));
     } catch (e) {
       emit(
         state.copyWith(
@@ -28,19 +37,24 @@ class FavoriteBooksCubit extends Cubit<FavoriteBooksState> {
 
   void toggleFavorite(Book book) {
     try {
-      final List<Book> currentBooks = List.from(state.books);
-      final int existingIndex = currentBooks.indexWhere(
-        (item) => item.id == book.id,
-      );
+      final List<Book> updatedBooks = List.from(state.books);
+      final existingIndex = updatedBooks.indexWhere((b) => b.id == book.id);
 
       if (existingIndex >= 0) {
-        currentBooks.removeAt(existingIndex);
+        updatedBooks.removeAt(existingIndex);
       } else {
-        currentBooks.add(book);
+        updatedBooks.add(book);
       }
+
+      _prefs.setObjectList<Book>(
+        StorageKeys.favoriteBooks,
+        updatedBooks,
+        (book) => json.encode(book.toJson()),
+      );
+
       emit(
         state.copyWith(
-          books: currentBooks,
+          books: updatedBooks,
           status: FavoriteBooksStatus.success,
         ),
       );
@@ -60,6 +74,12 @@ class FavoriteBooksCubit extends Cubit<FavoriteBooksState> {
 
   void clearFavorites() {
     try {
+      _prefs.setObjectList<Book>(
+        StorageKeys.favoriteBooks,
+        [],
+        (book) => json.encode(book.toJson()),
+      );
+
       emit(
         state.copyWith(books: const [], status: FavoriteBooksStatus.success),
       );

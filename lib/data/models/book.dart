@@ -27,9 +27,9 @@ class Book {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': '/works/$id',
+      'key': '/works/$id',
       'title': title,
-      'author': author,
+      'authors': author.split(', ').map((name) => {'name': name}).toList(),
       'cover_id': coverImageUrlId,
       'first_publish_year': publishYear,
     };
