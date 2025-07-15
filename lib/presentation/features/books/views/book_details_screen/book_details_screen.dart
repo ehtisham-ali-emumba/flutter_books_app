@@ -4,6 +4,8 @@ import 'package:books/presentation/features/books/blocs/favorite_books_cubit/fav
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'book_review.dart';
+
 class BookDetailsScreen extends StatelessWidget {
   final Book book;
   final String heroId;
@@ -73,6 +75,7 @@ class BookDetailsScreen extends StatelessWidget {
             _buildInfoRow(context, 'Published', book.publishYear.toString()),
             const SizedBox(height: 8),
             _buildInfoRow(context, 'ID', book.id),
+            BookReviews(book: book),
           ],
         ),
       ),

@@ -5,4 +5,5 @@ class StorageKeys {
   static const String themeColor = 'theme_color';
 
   static const String favoriteBooks = 'favorite_books';
+  static const String reviewBooks = 'review_books';
 }

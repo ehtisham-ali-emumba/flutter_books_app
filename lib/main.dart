@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/di/locator.dart';
 import 'core/navigation/app_routes.dart';
+import 'presentation/features/books/blocs/review_books_cubit/review_books_cubit.dart';
 import 'presentation/shared_blocs/app_bloc/app_bloc.dart';
 
 void main() async {
@@ -16,6 +17,7 @@ void main() async {
       providers: [
         BlocProvider(create: (_) => AppBloc()),
         BlocProvider(create: (_) => FavoriteBooksCubit()),
+        BlocProvider(create: (_) => BookReviewCubit()),
         // Add more BlocProviders here if needed
       ],
       child: const MyApp(),

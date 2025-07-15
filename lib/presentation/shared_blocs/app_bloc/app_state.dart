@@ -20,7 +20,7 @@ class AppState {
 }
 
 class AppInitialState extends AppState {
-  AppInitialState() : super(themeColor: Colors.brown, isDarkMode: false);
+  AppInitialState() : super(themeColor: Colors.deepOrange, isDarkMode: false);
 
   @override
   String toString() =>

@@ -12,6 +12,8 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("book");
+    print(book);
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 5, vertical: 20),
       decoration: BoxDecoration(
