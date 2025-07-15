@@ -35,10 +35,19 @@ class AppDrawerLayout extends StatelessWidget {
                 ],
               ),
             ),
-            ListTile(title: Text('Home'), onTap: () => context.go('/home')),
+            ListTile(
+              title: Text('Home'),
+              onTap: () {
+                context.pop();
+                context.go('/home');
+              },
+            ),
             ListTile(
               title: Text('Settings'),
-              onTap: () => context.go('/settings'),
+              onTap: () {
+                context.pop();
+                context.go('/settings');
+              },
             ),
           ],
         ),
