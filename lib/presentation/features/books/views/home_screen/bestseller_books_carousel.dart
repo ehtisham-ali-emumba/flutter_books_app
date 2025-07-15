@@ -1,3 +1,4 @@
+import 'package:books/components/shimers/carousel_shimmer.dart';
 import 'package:books/core/di/locator.dart';
 import 'package:books/data/repositories/book_repository.dart';
 import 'package:books/presentation/features/books/blocs/bestseller_books_cubit.dart';
@@ -18,7 +19,7 @@ class BestsellerBooksCarousel extends StatelessWidget {
       child: BlocBuilder<BestsellerBooksCubit, BookListState>(
         builder: (context, state) {
           if (state.isLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const CarouselShimmer();
           }
           return BooksCarousel(books: state.books, title: "Bestsellers");
         },

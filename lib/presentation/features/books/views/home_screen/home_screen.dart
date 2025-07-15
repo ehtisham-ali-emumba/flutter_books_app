@@ -1,4 +1,5 @@
 import 'package:books/components/shared_widgets/app_color_toggle.dart';
+import 'package:books/core/constants/app_strings.dart';
 import 'package:books/presentation/features/books/views/home_screen/scifi_books_carousel.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: AppDrawerIcon(),
-        title: Text("Books Home"),
+        title: Text(AppStrings.appName),
         centerTitle: true,
         actions: [AppDarkModeToggle(), AppColorToggle()],
       ),
