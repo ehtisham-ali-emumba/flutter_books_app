@@ -1,6 +1,6 @@
-import 'package:books/presentation/features/books/views/home_screen/app_color_toggle.dart';
-import 'package:books/presentation/features/books/views/home_screen/app_dark_mode_toggle.dart';
-import 'package:books/presentation/features/books/views/home_screen/app_drawer_icon.dart';
+import 'package:books/components/shared_widgets/app_color_toggle.dart';
+import 'package:books/components/shared_widgets/app_dark_mode_toggle.dart';
+import 'package:books/components/shared_widgets/app_drawer_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
