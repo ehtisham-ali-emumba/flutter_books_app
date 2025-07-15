@@ -56,8 +56,8 @@ class _BooksSearchViewState extends State<_BooksExploreView> {
                 ),
 
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                    margin: EdgeInsets.only(left: 8, right: 8),
                     child: InfiniteBooksList(
                       books: state.books,
                       onLoadMore: _onLoadMore,
