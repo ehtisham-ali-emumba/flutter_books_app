@@ -17,6 +17,14 @@ class _SearchHeaderState extends State<SearchHeader> {
   final _controller = TextEditingController();
   final _debouncer = Debouncer(milliseconds: 400);
 
+  void setSearchText(String text) {
+    _controller.text = text;
+    _controller.selection = TextSelection.fromPosition(
+      TextPosition(offset: text.length),
+    );
+    widget.onSearch(text);
+  }
+
   @override
   void dispose() {
     _debouncer.dispose();
@@ -49,7 +57,7 @@ class _SearchHeaderState extends State<SearchHeader> {
           ),
         ),
         SizedBox(height: 12),
-        SearchChips(onTap: widget.onSearch),
+        SearchChips(onTap: setSearchText),
       ],
     );
   }

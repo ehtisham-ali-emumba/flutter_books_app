@@ -6,15 +6,17 @@ class InfiniteBooksList extends StatelessWidget {
   final List<Book> books;
   final VoidCallback onLoadMore;
   final bool isLoading;
+  final bool isLoadingMore;
   final bool hasMore;
   final String heroPrefix;
-  final String query; // We use this to check if a search was performed
+  final String query;
 
   const InfiniteBooksList({
     super.key,
     required this.books,
     required this.onLoadMore,
     required this.isLoading,
+    required this.isLoadingMore,
     required this.hasMore,
     required this.heroPrefix,
     required this.query,
@@ -24,8 +26,8 @@ class InfiniteBooksList extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool hasSearched = query.trim().isNotEmpty;
 
+    // 👇 Initial loader
     if (isLoading && books.isEmpty && hasSearched) {
-      // 👇 Initial search loader (only if user has typed something)
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(32.0),
@@ -34,8 +36,8 @@ class InfiniteBooksList extends StatelessWidget {
       );
     }
 
+    // 👇 No results after search
     if (books.isEmpty && hasSearched && !isLoading) {
-      // 👇 No results after search
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(32.0),
@@ -44,8 +46,8 @@ class InfiniteBooksList extends StatelessWidget {
       );
     }
 
+    // 👇 No search done yet
     if (!hasSearched) {
-      // 👇 No search done yet
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(32.0),
@@ -54,18 +56,18 @@ class InfiniteBooksList extends StatelessWidget {
       );
     }
 
-    // 👇 Display list with optional bottom loader
+    // 👇 Display list with pagination spinner
     return NotificationListener<ScrollNotification>(
       onNotification: (scroll) {
         if (scroll.metrics.pixels >= scroll.metrics.maxScrollExtent - 300 &&
-            !isLoading &&
+            !isLoadingMore &&
             hasMore) {
           onLoadMore();
         }
         return false;
       },
       child: ListView.builder(
-        itemCount: books.length + (isLoading && hasMore ? 1 : 0),
+        itemCount: books.length + (isLoadingMore && hasMore ? 1 : 0),
         itemBuilder: (context, index) {
           if (index >= books.length) {
             return const Padding(

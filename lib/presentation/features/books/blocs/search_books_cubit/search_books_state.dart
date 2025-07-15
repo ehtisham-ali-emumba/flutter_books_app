@@ -37,6 +37,11 @@ class BookSearchState extends Equatable {
     );
   }
 
+  bool get isInitialLoading =>
+      status == BookSearchStatus.loading && books.isEmpty;
+  bool get isLoadingMore =>
+      status == BookSearchStatus.loadingMore && books.isNotEmpty;
+
   @override
   List<Object?> get props => [
     books,

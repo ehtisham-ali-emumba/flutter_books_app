@@ -50,7 +50,8 @@ class _BooksSearchViewState extends State<_BooksExploreView> {
                 child: InfiniteBooksList(
                   books: state.books,
                   onLoadMore: _onLoadMore,
-                  isLoading: state.status == BookSearchStatus.loading,
+                  isLoading: state.isInitialLoading,
+                  isLoadingMore: state.isLoadingMore,
                   hasMore: state.hasMore,
                   heroPrefix: 'search_',
                   query: state.query, // this is key!
