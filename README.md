@@ -10,8 +10,8 @@ A minimal Flutter app for browsing and managing books.
 
 ## Libraries
 
-- `provider` — State management
-- `http` — Networking
+- `flutter-bloc` — State management
+- `dio` — Networking
 - `flutter/material.dart` — UI components
 
 ## Getting Started
