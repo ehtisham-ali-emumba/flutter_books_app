@@ -1,9 +1,7 @@
-// cubit/book_search_cubit.dart
-
-import 'package:bloc/bloc.dart';
 import 'package:books/data/models/book.dart';
 import 'package:books/data/repositories/book_repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'search_books_state.dart';
 
@@ -29,7 +27,6 @@ class BookSearchCubit extends Cubit<BookSearchState> {
 
     try {
       final books = await repository.searchBooks(query, offset: 0);
-      print(books.toString());
       emit(
         state.copyWith(
           status: BookSearchStatus.success,
@@ -39,7 +36,6 @@ class BookSearchCubit extends Cubit<BookSearchState> {
         ),
       );
     } catch (e) {
-      print(e.toString());
       emit(
         state.copyWith(
           status: BookSearchStatus.error,
