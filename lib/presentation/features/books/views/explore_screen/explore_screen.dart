@@ -15,14 +15,12 @@ class ExploreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => BookSearchCubit(getIt<BookRepository>()),
-      child: const _BooksExploreView(),
+      child: _BooksExploreView(),
     );
   }
 }
 
 class _BooksExploreView extends StatefulWidget {
-  const _BooksExploreView({super.key});
-
   @override
   State<_BooksExploreView> createState() => _BooksSearchViewState();
 }
