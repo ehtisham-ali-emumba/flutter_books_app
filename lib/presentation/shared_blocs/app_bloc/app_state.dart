@@ -20,6 +20,7 @@ class AppState {
 }
 
 class AppInitialState extends AppState {
+  // Defaults: deepOrange and light mode
   AppInitialState() : super(themeColor: Colors.deepOrange, isDarkMode: false);
 
   @override
