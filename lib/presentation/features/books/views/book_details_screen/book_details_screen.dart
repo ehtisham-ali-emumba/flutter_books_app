@@ -1,3 +1,4 @@
+import 'package:books/components/shared_widgets/chart.dart';
 import 'package:books/core/utils/image_utils.dart';
 import 'package:books/data/models/book.dart';
 import 'package:books/presentation/features/books/blocs/favorite_books_cubit/favorite_books_cubit.dart';
@@ -75,7 +76,20 @@ class BookDetailsScreen extends StatelessWidget {
             _buildInfoRow(context, 'Published', book.publishYear.toString()),
             const SizedBox(height: 8),
             _buildInfoRow(context, 'ID', book.id),
+            const SizedBox(height: 30),
+            SimpleBarChart(
+              title: 'Monthly Reads',
+              values: [12, 18, 9, 14, 20, 7],
+              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            ),
+            SimplePieChart(
+              title: 'Genre Distribution',
+              values: [40, 30, 20, 10],
+              labels: ['Fiction', 'Non-Fiction', 'Sci-Fi', 'Other'],
+            ),
+            const SizedBox(height: 30),
             BookReviews(book: book),
+            const SizedBox(height: 40),
           ],
         ),
       ),
