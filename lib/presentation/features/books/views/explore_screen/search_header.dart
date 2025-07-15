@@ -1,8 +1,5 @@
-import 'package:books/components/shared_widgets/app_text.dart';
 import 'package:books/core/utils/input_utils.dart';
 import 'package:flutter/material.dart';
-
-import 'search_chips.dart';
 
 class SearchHeader extends StatefulWidget {
   final Function(String) onSearch;
@@ -37,8 +34,6 @@ class _SearchHeaderState extends State<SearchHeader> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppText("Search Books", kind: TextKind.heading),
-        SizedBox(height: 12),
         TextField(
           controller: _controller,
           onChanged: (value) {
@@ -57,7 +52,6 @@ class _SearchHeaderState extends State<SearchHeader> {
           ),
         ),
         SizedBox(height: 12),
-        SearchChips(onTap: setSearchText),
       ],
     );
   }
