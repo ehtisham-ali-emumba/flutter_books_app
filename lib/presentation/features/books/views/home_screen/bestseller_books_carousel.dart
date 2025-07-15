@@ -18,9 +18,7 @@ class BestsellerBooksCarousel extends StatelessWidget {
       },
       child: BlocBuilder<BestsellerBooksCubit, BookListState>(
         builder: (context, state) {
-          if (state.isLoading) {
-            return const CarouselShimmer();
-          }
+          if (state.isLoading) return const CarouselShimmer();
           return BooksCarousel(books: state.books, title: "Bestsellers");
         },
       ),

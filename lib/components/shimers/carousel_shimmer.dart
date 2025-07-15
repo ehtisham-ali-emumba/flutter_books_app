@@ -5,8 +5,8 @@ import 'package:shimmer/shimmer.dart';
 
 import 'card_shimmer.dart';
 
-class CarouselShimmer extends StatelessWidget {
-  const CarouselShimmer({super.key});
+class _CarouselShimmer extends StatelessWidget {
+  const _CarouselShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,5 +68,14 @@ class CarouselShimmer extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class CarouselShimmer extends StatelessWidget {
+  const CarouselShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return RepaintBoundary(child: _CarouselShimmer());
   }
 }

@@ -12,6 +12,18 @@ class OpenLibApiClient {
         contentType: 'application/json',
       ),
     );
+
+    dio.interceptors.add(
+      LogInterceptor(
+        request: true,
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: false,
+        responseBody: true,
+        error: true,
+        logPrint: print, // You can use your custom logger if needed
+      ),
+    );
   }
 
   Future<Response> get(

@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
         actions: [AppDarkModeToggle(), AppColorToggle()],
       ),
       body: SingleChildScrollView(
-        child: Column(
+        child: const Column(
           children: <Widget>[
             SizedBox(height: 20),
             BestsellerBooksCarousel(),
