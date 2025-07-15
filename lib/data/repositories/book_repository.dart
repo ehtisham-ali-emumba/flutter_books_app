@@ -29,6 +29,8 @@ class BookRepository {
     );
 
     final docs = response.data['docs'] as List;
+    print('Search results for "$query": ${docs.length} books found');
+    print(docs);
     return docs.map((json) => Book.fromJson(json)).toList();
   }
 }

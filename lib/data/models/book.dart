@@ -20,7 +20,11 @@ class Book {
       author: json['authors'] != null
           ? (json['authors'] as List).map((a) => a['name']).join(', ')
           : 'Unknown',
-      coverImageUrlId: json['cover_id'] != null ? json['cover_id'] as int : 0,
+      coverImageUrlId: json['cover_id'] != null
+          ? json['cover_id'] as int
+          : json['cover_i'] != null
+          ? json['cover_i'] as int
+          : 0,
       publishYear: json['first_publish_year'] as int,
     );
   }
@@ -33,5 +37,10 @@ class Book {
       'cover_id': coverImageUrlId,
       'first_publish_year': publishYear,
     };
+  }
+
+  @override
+  String toString() {
+    return 'Book{id: $id, title: $title, author: $author, coverImageUrlId: $coverImageUrlId, publishYear: $publishYear}';
   }
 }

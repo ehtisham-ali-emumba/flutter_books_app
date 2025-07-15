@@ -29,6 +29,7 @@ class BookSearchCubit extends Cubit<BookSearchState> {
 
     try {
       final books = await repository.searchBooks(query, offset: 0);
+      print(books.toString());
       emit(
         state.copyWith(
           status: BookSearchStatus.success,
@@ -38,6 +39,7 @@ class BookSearchCubit extends Cubit<BookSearchState> {
         ),
       );
     } catch (e) {
+      print(e.toString());
       emit(
         state.copyWith(
           status: BookSearchStatus.error,

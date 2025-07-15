@@ -15,6 +15,9 @@ class BookCard extends StatelessWidget {
     print("book");
     print(book);
     return Container(
+      height: 250,
+      width: double.infinity,
+      alignment: Alignment.center,
       margin: EdgeInsets.symmetric(horizontal: 5, vertical: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
