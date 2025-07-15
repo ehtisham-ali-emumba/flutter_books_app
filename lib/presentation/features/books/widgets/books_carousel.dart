@@ -23,10 +23,10 @@ class BooksCarousel extends StatelessWidget {
             children: [
               AppText(
                 title,
-                kind: TextKind.doToFamily,
-                fontWeight: FontWeight.w900,
+                kind: TextKind.heading,
+                fontWeight: FontWeight.w600,
                 color: Theme.of(context).colorScheme.primary,
-                fontSize: 22,
+                fontSize: 23,
               ),
               Icon(
                 Icons.book,

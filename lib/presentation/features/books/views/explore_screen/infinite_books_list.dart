@@ -1,3 +1,4 @@
+import 'package:books/core/constants/app_strings.dart';
 import 'package:books/data/models/book.dart';
 import 'package:books/presentation/features/books/widgets/book_card.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class InfiniteBooksList extends StatelessWidget {
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(32.0),
-          child: Text('No books found.'),
+          child: Text(AppStrings.noDataMessage),
         ),
       );
     }
@@ -51,7 +52,7 @@ class InfiniteBooksList extends StatelessWidget {
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(32.0),
-          child: Text('Search for books to get started.'),
+          child: Text(AppStrings.searchToGetStarted),
         ),
       );
     }

@@ -1,3 +1,4 @@
+import 'package:books/core/constants/app_strings.dart';
 import 'package:books/core/di/locator.dart';
 import 'package:books/data/repositories/book_repository.dart';
 import 'package:books/presentation/features/books/blocs/search_books_cubit/search_books_cubit.dart';
@@ -43,7 +44,7 @@ class _BooksSearchViewState extends State<_BooksExploreView> {
             leading: AppDrawerIcon(),
             centerTitle: true,
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            title: Text("ExploreScreen"),
+            title: Text(AppStrings.exploreScreen),
           ),
           body: Center(
             child: Column(

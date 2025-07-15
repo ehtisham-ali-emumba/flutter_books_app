@@ -1,4 +1,5 @@
 import 'package:books/components/shared_widgets/app_text.dart';
+import 'package:books/core/constants/app_strings.dart';
 import 'package:books/core/utils/image_utils.dart';
 import 'package:books/data/models/book.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,6 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("book");
-    print(book);
     return Container(
       height: 250,
       width: double.infinity,
@@ -82,19 +81,20 @@ class BookCard extends StatelessWidget {
                       AppText(
                         book.title,
                         kind: TextKind.heading,
-                        fontSize: 23,
+                        fontSize: 22,
                         color: Colors.white,
+                        fontWeight: FontWeight.w600,
                       ),
                       SizedBox(height: 15),
                       AppText(
-                        'By ${book.author}',
+                        '${AppStrings.by} ${book.author}',
                         kind: TextKind.caption,
                         color: Colors.white,
                         fontSize: 14,
                       ),
                       SizedBox(height: 5),
                       AppText(
-                        'Year ${book.publishYear}',
+                        '${AppStrings.year} ${book.publishYear}',
                         kind: TextKind.caption,
                         color: Colors.white,
                         fontSize: 14,

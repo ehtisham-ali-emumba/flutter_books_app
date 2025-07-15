@@ -1,5 +1,5 @@
 class AppStrings {
-  static const String appName = 'Flutter App';
+  static const String appName = 'Books App';
   static const String welcomeMessage = 'Welcome to Flutter App!';
   static const String errorMessage = 'An error occurred. Please try again.';
   static const String loadingMessage = 'Loading, please wait...';
@@ -9,6 +9,11 @@ class AppStrings {
   static const String cancelButtonText = 'Cancel';
   static const String reviews = 'Reviews';
   static const String addReview = 'Add Review';
+  static const String anErrorOccured = 'An error occurred';
+  static const String year = 'Year';
+  static const String noFavoritesYet = 'You have no favorite books yet';
+  static const String enterBookTitle = 'Enter book title or author';
+  static const String favoriteBooks = 'Favorite Books';
   static const String noReviews =
       'No reviews yet. Be the first to leave a review!';
   static const String ratingHint = 'Tap to rate';
@@ -17,6 +22,9 @@ class AppStrings {
   static const String save = 'Save';
   static const String delete = 'Delete';
   static const String edit = 'Edit';
+  static const String signInWithGoogle = 'Sign in with Google';
+  static const String signInWithGoogleAcc =
+      "Sign in with your Google account to continue";
 
   static const String selectThemeColor = 'Select Theme Color';
   static const String deleteReview = 'Delete Review';
@@ -34,4 +42,10 @@ class AppStrings {
   static const String enterYourThoughts = 'What did you think about the book?';
   static const String reviewCommentRequired = 'Please write a review';
   static const String reviewSubmit = 'Submit Review';
+  static const String published = 'Published';
+  static const String by = 'By';
+  static const String monthlyReads = 'Monthly Reads';
+  static const String exploreScreen = "ExploreScreen";
+  static const String genreDistribution = 'Genre Distribution';
+  static const String searchToGetStarted = 'Search for books to get started.';
 }

@@ -1,5 +1,6 @@
 import 'package:books/components/shared_widgets/app_text.dart';
 import 'package:books/components/shared_widgets/dnd_reorderable_grid.dart';
+import 'package:books/core/constants/app_strings.dart';
 import 'package:books/data/models/book.dart';
 import 'package:books/presentation/features/books/blocs/favorite_books_cubit/favorite_books_cubit.dart';
 import 'package:books/presentation/features/books/widgets/book_card.dart';
@@ -40,7 +41,7 @@ class _FavoriteBooksScreenState extends State<FavoriteBooksScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorite Books'),
+        title: const Text(AppStrings.favoriteBooks),
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
@@ -56,9 +57,7 @@ class _FavoriteBooksScreenState extends State<FavoriteBooksScreen> {
 
             case FavoriteBooksStatus.success:
               if (state.books.isEmpty) {
-                return const Center(
-                  child: AppText('You have no favorite books yet'),
-                );
+                return const Center(child: AppText(AppStrings.noFavoritesYet));
               }
 
               return Padding(
@@ -92,7 +91,7 @@ class _FavoriteBooksScreenState extends State<FavoriteBooksScreen> {
                     ),
                     const SizedBox(height: 16),
                     AppText(
-                      state.errorMessage ?? 'An error occurred',
+                      state.errorMessage ?? AppStrings.anErrorOccured,
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 16),
@@ -102,7 +101,7 @@ class _FavoriteBooksScreenState extends State<FavoriteBooksScreen> {
                             .read<FavoriteBooksCubit>()
                             .loadFavoriteBooks();
                       },
-                      child: const AppText('Retry'),
+                      child: const AppText(AppStrings.retryButtonText),
                     ),
                   ],
                 ),

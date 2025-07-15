@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 class AppTabLayout extends StatefulWidget {
   final Widget child;
 
-  const AppTabLayout({required this.child});
+  const AppTabLayout({super.key, required this.child});
 
   @override
   State<AppTabLayout> createState() => _AppTabLayoutState();

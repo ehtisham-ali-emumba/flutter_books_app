@@ -20,8 +20,6 @@ class BookRepository {
   Future<List<Book>> getHistoryBooks() => getBooksBySubject('history');
   Future<List<Book>> getSciFiBooks() => getBooksBySubject('science_fiction');
 
-  // in book_repository.dart
-
   Future<List<Book>> searchBooks(String query, {int offset = 0}) async {
     final response = await apiClient.get(
       '/search.json',
@@ -29,8 +27,6 @@ class BookRepository {
     );
 
     final docs = response.data['docs'] as List;
-    print('Search results for "$query": ${docs.length} books found');
-    print(docs);
     return docs.map((json) => Book.fromJson(json)).toList();
   }
 }

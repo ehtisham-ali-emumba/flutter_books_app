@@ -16,7 +16,7 @@ class AppTextStyles {
   static TextStyle heading(BuildContext context) => TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
-    fontFamily: 'Sansation',
+    fontFamily: 'Inter',
     color: Theme.of(context).colorScheme.onSurface,
   );
 
@@ -30,7 +30,7 @@ class AppTextStyles {
   static TextStyle caption(BuildContext context) => TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
-    fontFamily: 'Sansation',
+    fontFamily: 'Inter',
     color: Theme.of(context).colorScheme.onSurface,
   );
 

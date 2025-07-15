@@ -56,11 +56,9 @@ final GoRouter appRouter = GoRouter(
           path: "/review-book/:bookId",
           builder: (context, state) {
             final bookId = state.pathParameters['bookId']!;
-            print("bookId $bookId");
             final Map<String, dynamic> extras =
                 state.extra as Map<String, dynamic>;
             final bookTitle = extras['bookTitle'] as String;
-            print("bookTitle $bookTitle");
             return AddEditRateBookScreen(bookId: bookId, bookTitle: bookTitle);
           },
         ),

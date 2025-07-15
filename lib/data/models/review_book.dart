@@ -36,4 +36,8 @@ class ReviewBook {
     'datePosted': datePosted.toIso8601String(),
     'imageFilePath': imageFilePath,
   };
+  @override
+  String toString() {
+    return 'ReviewBook{id: $id, bookId: $bookId, userName: $userName, comment: $comment, rating: $rating, datePosted: $datePosted, imageFilePath: $imageFilePath}';
+  }
 }

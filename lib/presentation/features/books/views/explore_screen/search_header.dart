@@ -1,3 +1,4 @@
+import 'package:books/core/constants/app_strings.dart';
 import 'package:books/core/utils/input_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,7 @@ class _SearchHeaderState extends State<SearchHeader> {
             _debouncer(value, widget.onSearch);
           },
           decoration: InputDecoration(
-            hintText: "Enter book title or author",
+            hintText: AppStrings.enterBookTitle,
             prefixIcon: Icon(Icons.search),
             suffixIcon: IconButton(
               onPressed: () {
