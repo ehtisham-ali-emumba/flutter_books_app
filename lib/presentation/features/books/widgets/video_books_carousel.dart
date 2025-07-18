@@ -46,7 +46,7 @@ class _VideoBooksCarouselState extends State<VideoBooksCarousel> {
   void _stopAllVideos() {
     var i = 0;
     for (var key in _bookCardKeys) {
-      key.currentState?.disableVideoMode(index: i);
+      key.currentState?.disableVideoMode();
       i++;
     }
   }

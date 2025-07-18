@@ -75,7 +75,7 @@ class BookCardState extends State<BookCard> {
   }
 
   // Method to disable video mode and return to normal book card
-  void disableVideoMode({int? index}) {
+  void disableVideoMode() {
     _videoController?.pause();
     _videoController?.dispose();
     _videoController = null;
