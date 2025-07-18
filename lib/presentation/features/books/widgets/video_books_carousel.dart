@@ -18,7 +18,6 @@ class VideoBooksCarousel extends StatefulWidget {
 
 class _VideoBooksCarouselState extends State<VideoBooksCarousel> {
   List<GlobalKey<BookCardState>> _bookCardKeys = [];
-  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -42,7 +41,6 @@ class _VideoBooksCarouselState extends State<VideoBooksCarousel> {
       /**/
       _bookCardKeys[index].currentState?.enableVideoMode();
     }
-    _currentIndex = index;
   }
 
   void _stopAllVideos() {
