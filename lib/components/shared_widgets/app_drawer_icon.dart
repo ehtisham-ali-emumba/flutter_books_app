@@ -1,4 +1,6 @@
-import 'package:books/components/layouts/app_drawer_layout.dart';
+import 'package:books/components/layouts/app_drawer/app_drawer_layout.dart';
+import 'package:books/core/responsive/responsive.dart';
+import 'package:books/presentation/shared_view_models/app_drawer_provider.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawerIcon extends StatelessWidget {
@@ -9,7 +11,14 @@ class AppDrawerIcon extends StatelessWidget {
     return IconButton(
       icon: const Icon(Icons.menu),
       onPressed: () {
-        AppDrawerLayout.scaffoldKey.currentState?.openDrawer();
+        if (R.mobile()) {
+          AppDrawerLayout.scaffoldKey.currentState?.openDrawer();
+        } else {
+          final toggleDrawer = DrawerControllerProvider.of(
+            context,
+          )?.toggleDrawer;
+          toggleDrawer?.call();
+        }
       },
     );
   }

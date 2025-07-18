@@ -6,12 +6,52 @@ import 'package:books/presentation/features/books/widgets/book_card.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
 
-class BooksCarousel extends StatelessWidget {
+class VideoBooksCarousel extends StatefulWidget {
   final dynamic title;
-
   final List<Book> books;
 
-  const BooksCarousel({super.key, this.title, required this.books});
+  const VideoBooksCarousel({super.key, this.title, required this.books});
+
+  @override
+  State<VideoBooksCarousel> createState() => _VideoBooksCarouselState();
+}
+
+class _VideoBooksCarouselState extends State<VideoBooksCarousel> {
+  List<GlobalKey<BookCardState>> _bookCardKeys = [];
+  int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Create keys for each book
+    _bookCardKeys = widget.books
+        .map((book) => GlobalKey<BookCardState>())
+        .toList();
+
+    // Start first video after 2 seconds
+    Future.delayed(Duration(seconds: 2), () {
+      if (_bookCardKeys.isNotEmpty) {
+        _bookCardKeys[0].currentState?.enableVideoMode();
+      }
+    });
+  }
+
+  void _onPageChanged(int index, CarouselPageChangedReason reason) async {
+    _stopAllVideos();
+    if (index < _bookCardKeys.length) {
+      /**/
+      _bookCardKeys[index].currentState?.enableVideoMode();
+    }
+    _currentIndex = index;
+  }
+
+  void _stopAllVideos() {
+    var i = 0;
+    for (var key in _bookCardKeys) {
+      key.currentState?.disableVideoMode(index: i);
+      i++;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +63,7 @@ class BooksCarousel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               AppText(
-                title,
+                widget.title,
                 kind: TextKind.heading,
                 fontWeight: FontWeight.w600,
                 color: Theme.of(context).colorScheme.primary,
@@ -45,11 +85,20 @@ class BooksCarousel extends StatelessWidget {
             viewportFraction: R.value(mobile: 0.55, tablet: 0.12),
             padEnds: false,
             enableInfiniteScroll: false,
+            onPageChanged: _onPageChanged,
           ),
-          items: books.map((book) {
+          items: widget.books.asMap().entries.map((entry) {
+            int index = entry.key;
+            Book book = entry.value;
+
             return Padding(
-              padding: EdgeInsetsGeometry.symmetric(horizontal: 5),
-              child: BookCard(heroId: '${title}_${book.id}', book: book),
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              child: BookCard(
+                key: _bookCardKeys[index],
+                heroId: '${widget.title}_${book.id}',
+                book: book,
+                globalKey: _bookCardKeys[index],
+              ),
             );
           }).toList(),
         ),

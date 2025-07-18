@@ -1,16 +1,16 @@
 import 'package:books/data/repositories/book_repository.dart';
-import 'package:books/presentation/features/books/blocs/book_list_state.dart';
+import 'package:books/presentation/features/books/view_models/book_list_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BestsellerBooksCubit extends Cubit<BookListState> {
+class SciFiBooksCubit extends Cubit<BookListState> {
   final BookRepository repository;
 
-  BestsellerBooksCubit(this.repository) : super(const BookListState());
+  SciFiBooksCubit(this.repository) : super(const BookListState());
 
-  Future<void> loadBestsellers() async {
+  Future<void> loadSciFi() async {
     emit(state.copyWith(isLoading: true, error: null));
     try {
-      final books = await repository.getBestsellers();
+      final books = await repository.getSciFiBooks();
       emit(state.copyWith(books: books, isLoading: false));
     } catch (e) {
       emit(state.copyWith(error: e.toString(), isLoading: false));

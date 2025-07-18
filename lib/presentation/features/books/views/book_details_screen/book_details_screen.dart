@@ -2,7 +2,7 @@ import 'package:books/components/shared_widgets/chart.dart';
 import 'package:books/core/constants/app_strings.dart';
 import 'package:books/core/utils/image_utils.dart';
 import 'package:books/data/models/book.dart';
-import 'package:books/presentation/features/books/blocs/favorite_books_cubit/favorite_books_cubit.dart';
+import 'package:books/presentation/features/books/view_models/favorite_books_cubit/favorite_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,5 +1,7 @@
 import 'package:books/components/shared_widgets/app_color_toggle.dart';
 import 'package:books/core/constants/app_strings.dart';
+import 'package:books/core/responsive/space.dart';
+import 'package:books/presentation/features/books/views/home_screen/new_books_video_carousel.dart';
 import 'package:books/presentation/features/books/views/home_screen/scifi_books_carousel.dart';
 import 'package:flutter/material.dart';
 
@@ -15,20 +17,26 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: AppDrawerIcon(),
+        leading: Padding(
+          padding: EdgeInsetsGeometry.only(left: 0),
+          child: AppDrawerIcon(),
+        ),
         title: Text(AppStrings.appName),
         centerTitle: true,
         actions: [AppDarkModeToggle(), AppColorToggle()],
+        actionsPadding: EdgeInsetsGeometry.only(right: 0),
       ),
       body: SingleChildScrollView(
-        child: const Column(
+        child: Column(
           children: <Widget>[
-            SizedBox(height: 20),
-            BestsellerBooksCarousel(),
-            SizedBox(height: 20),
-            HistoryBooksCarousel(),
-            SizedBox(height: 20),
-            SciFiBooksCarousel(),
+            Sp.h24,
+            const NewBooksCarousel(),
+            Sp.h16,
+            const BestsellerBooksCarousel(),
+            Sp.h16,
+            const HistoryBooksCarousel(),
+            Sp.h16,
+            const SciFiBooksCarousel(),
           ],
         ),
       ),

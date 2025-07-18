@@ -1,7 +1,7 @@
 import 'package:books/core/constants/app_strings.dart';
 import 'package:books/core/di/locator.dart';
 import 'package:books/data/repositories/book_repository.dart';
-import 'package:books/presentation/features/books/blocs/search_books_cubit/search_books_cubit.dart';
+import 'package:books/presentation/features/books/view_models/search_books_cubit/search_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

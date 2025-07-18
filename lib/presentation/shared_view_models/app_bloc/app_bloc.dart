@@ -1,10 +1,11 @@
 import 'package:books/core/constants/storage_keys.dart';
 import 'package:books/core/di/locator.dart';
 import 'package:books/core/services/shared_prefs_service.dart';
-import 'package:books/presentation/shared_blocs/app_bloc/app_event.dart';
-import 'package:books/presentation/shared_blocs/app_bloc/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'app_event.dart';
+import 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   final SharedPrefsService _prefs = getIt<SharedPrefsService>();

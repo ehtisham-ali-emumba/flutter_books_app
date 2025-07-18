@@ -26,6 +26,9 @@ class BaseCarousel extends StatelessWidget {
       aspectRatio: 16 / 9,
       viewportFraction: 0.8,
       enableInfiniteScroll: true,
+      onPageChanged: (index, reason) {
+        print("index $index");
+      },
     );
 
     final effectiveOptions = mergeOptions(defaultOptions, options);

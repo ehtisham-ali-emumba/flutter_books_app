@@ -5,7 +5,7 @@ import 'package:books/components/shared_widgets/custom_snackbar.dart';
 import 'package:books/core/constants/app_strings.dart';
 import 'package:books/data/models/book.dart';
 import 'package:books/data/models/review_book.dart';
-import 'package:books/presentation/features/books/blocs/review_books_cubit/review_books_cubit.dart';
+import 'package:books/presentation/features/books/view_models/review_books_cubit/review_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

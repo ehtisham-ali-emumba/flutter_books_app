@@ -2,7 +2,7 @@ import 'package:books/components/shared_widgets/app_text.dart';
 import 'package:books/components/shared_widgets/custom_snackbar.dart';
 import 'package:books/components/shared_widgets/image_picker.dart';
 import 'package:books/core/constants/app_strings.dart';
-import 'package:books/presentation/features/books/blocs/review_books_cubit/review_books_cubit.dart';
+import 'package:books/presentation/features/books/view_models/review_books_cubit/review_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

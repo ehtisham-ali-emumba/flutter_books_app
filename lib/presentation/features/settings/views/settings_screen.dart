@@ -9,6 +9,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("SettingsScreen ${context.mounted}");
     return Scaffold(
       appBar: AppBar(
         leading: const AppDrawerIcon(),
